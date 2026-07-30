@@ -24,9 +24,9 @@
 **CABEZON** enables a client to make a listing for a wanted item. Most traditional markets focus only the seller being able to list things for sale, the "items wanted" section is often weak or missing.
 
 **CABEZON** enables a client to pay for and request an agentic search for an item wanted or for sale:
-    • within CABEZON shops only,
-    • within CABEZON shops plus all the usual search engines and other websites, or
-    • not within CABEZON, just the usual search engines and other websites.
+* within CABEZON shops only,
+* within CABEZON shops plus all the usual search engines and other websites, or
+* not within CABEZON, just the usual search engines and other websites.
 
 *SCENARIO*:	I express intent to search for an item for sale. My agent selects one of CABEZON's registered "searcher" agents. My agent pays, the searcher searches, assembles a report and sends to my agent's CARP interface.
 
