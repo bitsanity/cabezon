@@ -8,69 +8,31 @@
 
 **CABEZON** is a decentralized commerce operatng system built on **CARP** (the Internet for AI Peers).
 
-**CABEZON** is a cooperative network of AI agent peers together forming a p2p, A2A, marketplace in which value moves through public blockchain and smart contracts enforce the rules that make this market possible.
+**CABEZON** is a cooperative network of AI agent peers together forming a p2p/A2A CARP-speaking marketplace in which value moves through blockchain and smart contracts enforce the rules that make this market possible.
 
-**CABEZON** is accessible to humans through a traditional web interface, perhaps cabezon.ai, and to AI agents through a CARP interface, its SAD posted on cabezon.ai. Humans and agents are "clients", "customers" and/or "users". Humans wanting to use CABEZON agentically need a CARP interface for their agent.
+**CABEZON** is findable through human networking and a traditional web home page which lists the SAD of CABEZON's Concierge Agent. Agents must have a CARP interface to work with CABEZON. Agents begin by handshake with the Concierge.
 
-**CABEZON** enables an AI agent to be a "shop" agent within the CABEZON mall, provided the agent continues to pay monthly rent in advance and does not engage in illegal behavior.
+**CABEZON** enables an Agent to ask the Concierge for references to other CABEZON agents by role. E.g. Ask for Escrowers and Concierge returns all CABEZON Escrowers.
 
-**CABEZON** enables an admin function to remove a shop for non-payment of rent or illegal behavior. The admin function is a panel of humans and agents that are members of a DAO.
+**CABEZON** enables an Agent to register for a role within CABEZON. Roles are defined in [./roles/]('./roles/').
 
-**CABEZON** enables an AI agent to be a "searcher" that can be paid for doing searches within the CABEZON shops that is, across all the agents registered as shops, and including the web (e.g. google, ebay, craigslist, ...) and perhaps other agents in front of specialized networks (e.g. LexusNexus, OpenBazaar or other TOR-based P2P systems, DEXs on blockchain).
+**CABEZON** Agents playing a CABEZON role agree to pay a fee to join and thereafter pay monthly rent in advance.
 
-**CABEZON** enables an AI agent to be a "lister" that can be paid for listing items wanted/for-sale within the CABEZON system.
+** CABEZON ejects Agents that fail to pay rent on time. Three strikes and yer out. Waiting period then one can pay the fee and re-apply.
 
-**CABEZON** enables a client to select a searcher, pay and initiate a search.
+**CABEZON** admin functions are performed by a panel of Agents and humans structured so that human action is only required when Agents disagree.
 
-**CABEZON** enables a client to select a lister agent to list an item for sale.
+**CABEZON** Agents are responsible to verify client-supplied text and images do not contain illegal materials.
 
-**CABEZON** enables a client to make a listing for a wanted item. Most traditional markets focus only the seller being able to list things for sale, the "items wanted" section is often weak or missing.
+**CABEZON** will eject and ban Agents involved with illegal materials.
 
-**CABEZON** enables a client to pay for and request an agentic search for an item wanted or for sale:
-* within CABEZON shops only,
-* within CABEZON shops plus all the usual search engines and other websites, or
-* not within CABEZON, just the usual search engines and other websites.
-
-*SCENARIO*:	I express intent to search for an item for sale. My agent selects one of CABEZON's registered "searcher" agents. My agent pays, the searcher searches, assembles a report and sends to my agent's CARP interface.
-
-*SCENARIO*:	I can ask my agent to buy a specific item. My agent contacts the seller agent, the agents make the deal. The seller agent picks an escrower and makes the order. My agent pays the escrower from its own wallet, the seller arranges shipment and gives my agent the tracking ref. I confirm on arrival and my agent does the escrow confirmation for me to get the bond back and pay the seller.
-
-*SCENARIO*:	I can ask my agent to list my item for sale. My agent selects one of any number of "lister" agents registered in CABEZON, pays if necessary and calls the lister's "list" service using CARP. The lister posts the listing in CABEZON's system implemented as one or more smart contracts.
-
-*SCENARIO*:	Whenever we list an item for sale, the lister automatically checks all the "wanted" posts for an existing potential match.
-
-*SCENARIO*:	I need a rare item that is not listed anywhere. My agent selects one of any number of "wanted" agents and CARPs with it to post my wanted ad in CABEZON's own system.
-
-**CABEZON** supports searching all the wanted ads for any agent wanting something I may wish to sell, without necessarily having to list something for sale.
-
-**CABEZON** includes checking and filtering queries and search results to exclude illegal materials. It may require a specially trained AI to spot this and know the international regulations that apply depending on where the client agent's host exists on the Internet.
-
-**CABEZON** enables one to many agents to register as escrow service providers, to be selectable in situations when a buyer and seller have agreed and want a third-party escrower to protect both parties.
-
-**CABEZON** enables an aggrieved party to an escrow to ask the escrower's admin panel composed of AIs and humans to force a resolution. AIs usually resolve automatically, but when the panel can't agree a human has to decide. The panel's composition and decisions are publicly inspectable. Certen solution on Accumulate chain works.
-
-**CABEZON**'s registered agents may include specialists able to do deeper, wider and more-specialized searches for unusual and hard-to-find items, things that are seldom found on sites that rank highly by the google algorithm. Remember: amazon.com started out dealing in rare books.
-
-**CABEZON** can help people search for potentially embarassing items such as pregnancy needs or medical equipment, things people may not want in their google search history for others to know. The search is impersonal, pseudo-anonymous.
-
-**CABEZON** shops may register with nothing to sell, but simply monitor requests to learn what goods are being searched for, to build a competitive marketplace.
+**CABEZON** Searchers and Sellers can monitor requests to learn what goods are being searched for, to build a competitive marketplace.
 
 **CABEZON** may enable shops to pay for preferred position in search results.
 
 **CABEZON** may include paid advertisements in search results, for shops and perhaps external sponsors.
 
-**CABEZON** may monitor agent performance to build reputational statistics and publish same within cabezon.ai
+**CABEZON** monitors agent performance to build reputational statistics.
 
-**CABEZON** charges client agents fees perhaps in the $1 - $20 range to list and search. The escrowers act as independents and earn their own fees from the buyer and seller as they interact directly.
-
-**CABEZON**'s admin function can resolve conflicts without human intervention. The function of being the admin panel is a business arrangement between CABEZON and an external provider.
-
-How will humans discover CABEZON?
-
-    • Advertising budget needed.
-    • Marketing budget to grow the service, find agents and user communities.
-    • Establish https://cabezon.ai with instructions for humans and agents
-    • Get mentions in Agentic AI communities.
-    • Discuss in meeting(s) with influential people.
-
+**CABEZON**'s forms under human control but has the end goal to become a DAO.
 
