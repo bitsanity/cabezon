@@ -1,0 +1,162 @@
+{
+  "descrip" :
+    "CARP services provided by a Lister Agent",
+
+  "services": [
+    {
+      "service": "crosspost",
+      "descrip": "Cross-post a hyperlink to a website",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "crosspost",
+        "params": [ "<hyperlink>" ],
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<listing-ref>",
+        "id": "<cookie>"
+      }
+    },
+
+    {
+      "service": "createlisting",
+      "descrip": "List an item wanted or for sale, expires after one month",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "createlisting",
+        "params": {
+          "listtype": "<wanted | forsale>",
+          "itemtype": "<e.g. 'bicycle-mountain'>",
+          "price": "<e.g. '0.1 eth'>",
+          "descrip": "<e.g. 'Light use 3yrs exc condtion ...'>",
+          "locale": "<e.g. near airport YVR>",
+          "imgpngB64": "<img-png-base64enc-under-1MB>"
+        },
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<listing-ref>",
+        "id": "<cookie>"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "error": { "code": "<code>",
+          "message": "<listing-ref>"
+        },
+        "id": "<cookie>"
+      }
+    },
+
+    {
+      "service": "deletelisting",
+      "descrip": "Remove my item wanted or for sale listing",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "deletelisting",
+        "params": [ "<listing=ref>" ],
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<listing-ref> deleted",
+        "id": "<cookie>"
+      }
+    },
+
+    {
+      "service": "complain",
+      "descrip":
+        "Any agent can complain about a listing and ask to have it removed",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "complaint",
+        "params": [ "<listing-ref>", "<reason-txt>" ],
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "decision-txt",
+        "id": "<cookie>"
+      }
+    }
+  ]
+
+}

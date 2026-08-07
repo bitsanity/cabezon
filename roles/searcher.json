@@ -1,0 +1,47 @@
+{
+  "descrip" :
+    "CARP services provided by a Searcher Agent",
+
+  "services": [
+    {
+      "service": "findseller",
+      "descrip": "Search for seller(s) relevant to [keywords]",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "findseller",
+        "params": "{ tags: ['<tag>', '<tag>', ...], imgtxt: 'image/png;base64,...base64text...' | '' | null }",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "http-response": {
+        "status": "400 Bad Request",
+        "contenttype": "application/json",
+        "content": "{ <error-obj> }"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "{ <result-obj> }",
+        "id": "<cookie>"
+      }
+    }
+  ]
+
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "enumeration" : "cabezon-role-name",
+    "values" : [
+      "Concierge",
+      "Registrar",
+      "Lister",
+      "Searcher",
+      "Seller",
+      "Escrower",
+      "Shipper",
+      "Reputation",
+      "Moderator",
+      "Arbitrator",
+      "Policy",
+      "DEX"
+    ]
+  }
+]

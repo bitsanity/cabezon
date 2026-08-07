@@ -1,0 +1,81 @@
+{
+  "include" : "./definitions.json",
+
+  "descrip" :
+    "CARP services provided by a Registrar Agent",
+
+  "services": [
+    {
+      "service": "register",
+      "descrip":
+      "Option. Register as a CABEZON customer and build customer reputation.",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "register",
+        "params": [],
+        "id": "<ethereum-transaction-hash-from-fee>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<registration-agreement>",
+        "id": "<client-cookie>"
+      }
+    },
+
+    {
+      "service": "join",
+      "descrip":
+        "Apply for membership in CABEZON Mall. Initial fee, monthly rent",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.1 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "join",
+        "params": [ "<cabezon-role-name>" ],
+        "id": "<ethereum-transaction-hash-from-fee>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<rental-agreement>",
+        "id": "<client-cookie>"
+      }
+    }
+  ]
+
+}

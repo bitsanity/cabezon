@@ -1,0 +1,75 @@
+{
+  "include" : "./definitions.json",
+
+  "descrip" :
+    "CARP services provided by a Reputation Agent that keeps score on everyone",
+
+  "services": [
+    {
+      "service": "adjust",
+      "descrip": "Adjust rep (plus or minus) for an agent or customer",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.0005 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "plus",
+        "params": [ "<pubkey-or-DID>", "<flag: plus | minus>", "<note-txt>" ],
+        "id": "<ethereum-transaction-hash-from-fee>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": null
+    },
+
+    {
+      "service": "score",
+      "descrip": "Get the latest rep score for an agent or customer",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 eth",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "score",
+        "params": [ "<pubkey-or-DID>" ],
+        "id": "<ethereum-transaction-hash-from-fee>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : { "<score-report>" },
+        "id": "<cookie>"
+      }
+    }
+  ]
+
+}

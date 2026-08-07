@@ -1,0 +1,77 @@
+{
+  "include" : "./definitions.json",
+
+  "descrip" :
+    "CARP services provided by any Concierge Agent for CABEZON Mall",
+
+  "services": [
+    {
+      "service": "agents",
+      "descrip": "Retrieve SADs of CABEZON agents by <cabezon-role-name>",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "agents",
+        "params": [ "<cabezon-role-name>" ],
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "[ SAD, ... ]",
+        "id": "<client-cookie>"
+      }
+    },
+
+    {
+      "service": "rent",
+      "descrip":
+      "All agents pay the Concierge monthly to remain listed and referable",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.001 ether",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "agents",
+        "params": [ "<cabezon-role-name>" ],
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<confirmation>",
+        "id": "<cookie>"
+      }
+    }
+  ]
+
+}

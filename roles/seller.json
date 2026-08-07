@@ -1,0 +1,119 @@
+{
+  "descrip" :
+    "CARP services provided by a Seller Agent",
+
+  "services": [
+    {
+      "service": "about",
+      "descrip": "Get a text information package about this Seller/Store",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "about",
+        "params": "[]",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<about-seller-text>",
+        "id": "<cookie>"
+      }
+    },
+
+    {
+      "service": "enquiry",
+      "descrip":
+        "Enquire about items relevant to [tag,tag,...] and/or <img>",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "enquiry",
+        "params": "{ tags: ['<tag>', ...], imgtxt: 'image/png;base64,...' | '' | null }",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "http-response": {
+        "status": "400 Bad Request",
+        "contenttype": "application/json",
+        "content": "{ <error-obj> }"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "[ { itemref: <upc>, price: <price>, <ships-from>, ... } ]",
+        "id": "<cookie>"
+      }
+    },
+
+    {
+      "service": "purchase",
+      "descrip":
+        "Request to purchase <qty> <upc> at <price>, ship to <shipto>, <special-instructions>",
+      "authentication": true,
+      "synchronous": false,
+      "fee": {
+        "amt": "0.0005 ether",
+        "to": "0x...address",
+        "network": "Ethereum"
+      },
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "purchase",
+        "params":
+          "[ <qty>, <upc>, <price>, <shipto>, <special-instructions> ]",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "http-response": {
+        "status": "400 Bad Request",
+        "contenttype": "application/json",
+        "content": "{ <error-obj> }"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "{<payment-instructions-including-escrower-orderId>}",
+        "id": "<cookie>"
+      }
+    }
+
+  ]
+
+}
