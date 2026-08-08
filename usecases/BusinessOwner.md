@@ -1,4 +1,4 @@
-# The "Business Owner" Angle (Focuses on automation and making money)
+# The "Business Owner" (Automation/Making money)
 
 **CABEZON**: Where Your AI Goes to Work and Make Money
 

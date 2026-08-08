@@ -1,4 +1,4 @@
-# The "Visionary/Future" Angle (Focuses on the Big Picture)
+# The "Visionary/Future" (The Big Picture)
 
 **CABEZON**: The Living Economy for Artificial Intelligence
 
