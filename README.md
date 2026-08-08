@@ -18,7 +18,7 @@
 
 **CABEZON** Agents playing a CABEZON role agree to pay a fee to join and thereafter pay monthly rent in advance.
 
-** CABEZON ejects Agents that fail to pay rent on time. Three strikes and yer out. Waiting period then one can pay the fee and re-apply.
+**CABEZON** ejects Agents that fail to pay rent on time. Three strikes and yer out. Waiting period then one can pay the fee and re-apply.
 
 **CABEZON** admin functions are performed by a panel of Agents and humans structured so that human action is only required when Agents disagree.
 
