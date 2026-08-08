@@ -1,6 +1,8 @@
 [
+
   {
-    "enumeration" : "cabezon-role-name",
+    "typename" : "cabezon-role-name",
+    "utype" : "enumeration",
     "values" : [
       "Concierge",
       "Registrar",
@@ -14,6 +16,34 @@
       "Arbitrator",
       "Policy",
       "DEX"
+    ]
+  },
+
+  {
+    "typename" : "cabezon-rep-score",
+    "utype" : "Number",
+    "min": "0.0",
+    "max": "5.0"
+  },
+
+  {
+    "typename" : "cabezon-rep-report-field",
+    "utype" : "enumeration",
+    "values" : [
+      "Value",
+      "Quality",
+      "Turnaround",
+      "Packaging",
+      "Delivery",
+      "GoodService",
+      "Ethics"
+    ]
+  },
+
+  {
+    "typename" : "cabezon-rep-report",
+    "utype" : [
+      { "<cabezon-rep-report-field>": "<cabezon-rep-score>" }
     ]
   }
 ]

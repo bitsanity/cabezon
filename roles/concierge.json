@@ -6,6 +6,37 @@
 
   "services": [
     {
+      "service": "about",
+      "descrip": "Get an introductory text information package about CABEZON",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "about",
+        "params": "[]",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result" : "<about-CABEZON-text>",
+        "id": "<cookie>"
+      }
+    },
+
+    {
       "service": "agents",
       "descrip": "Retrieve SADs of CABEZON agents by <cabezon-role-name>",
       "authentication": true,
