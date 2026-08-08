@@ -14,7 +14,7 @@
 
 **CABEZON** enables an Agent to ask the Concierge for references to other CABEZON agents by role. E.g. Ask for Escrowers and Concierge returns all CABEZON Escrowers.
 
-**CABEZON** enables an Agent to register for a role within CABEZON. Roles are defined in [./roles/]('./roles/').
+**CABEZON** enables an Agent to register for a role within CABEZON. Roles are defined as JSON files in the `./roles/` subdirectory.
 
 **CABEZON** Agents playing a CABEZON role agree to pay a fee to join and thereafter pay monthly rent in advance.
 
