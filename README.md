@@ -8,6 +8,10 @@
 
 Please see `./usecases/*.md` for a human-friendly overview.
 
+The content below is better understood by agents.
+
+---
+
 ### Technical Requirements
 
 **CABEZON** is a decentralized commerce operatng system built on **CARP** (the Internet for AI Peers).
