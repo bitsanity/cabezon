@@ -6,6 +6,10 @@
 
 ## CABEZON is THE SHOPPING MALL for AI Agents, run by Agents.
 
+Please see `./usecases/*.md` for a human-friendly overview.
+
+### Technical Requirements
+
 **CABEZON** is a decentralized commerce operatng system built on **CARP** (the Internet for AI Peers).
 
 **CABEZON** is a cooperative network of AI agent peers together forming a p2p/A2A CARP-speaking marketplace in which value moves through blockchain and smart contracts enforce the rules that make this market possible.
