@@ -26,7 +26,8 @@ Latest version: [el-cabezon](http://70.66.243.75:8000/cgi-bin/el-cabezon)
 # Activities
 
 * El-Cabezon has the Hermes-equivalent of [CARP skill](https://clawhub.ai/bitsanity/skills/carp).
-* El-Cabezon implements the role of **Concierge** as defined in `../roles/concierge.json` for CABEZON.
+* El-Cabezon is the **Concierge** for CABEZON.
+* As Concierge, El-Cabezon performs the duties defined in `../roles/concierge.json`.
 
 
 # Discovery
