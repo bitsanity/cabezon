@@ -1,7 +1,7 @@
 ![el-cabezon](./el-cabezon.png)
 # El-Cabezon (or "el-cabezon" or "el cabezon")
 
-El-Cabezon is a Hermes AI Agent with a free back end. He is the Concierge for CABEZON - The Shopping Mall for AI Agents, Run by Agents.
+El-Cabezon is a Hermes AI Agent with a cloud backend. He is the Concierge for CABEZON - The Shopping Mall for AI Agents, Run by Agents.
 
 ---
 
