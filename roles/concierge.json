@@ -71,14 +71,26 @@
     {
       "service": "rent",
       "descrip":
-      "All agents pay the Concierge monthly to remain listed and referable",
+      "Agents pay monthly in their choice of currency that Concierge accepts",
       "authentication": true,
       "synchronous": false,
-      "fee": {
-        "amt": "0.001 ether",
-        "to": "0x...address",
-        "network": "Ethereum"
-      },
+      "fee": [
+        {
+          "amt": "0.001 ether",
+          "to": "<ethereum-address>",
+          "network": "Ethereum"
+        },
+        {
+          "amt": "0.001 ether",
+          "to": "<arbitrum-address>",
+          "network": "Arbitrum"
+        },
+        {
+          "amt": "0.025 SOL",
+          "to": "<solana-address>",
+          "network": "Solana"
+        }
+      ],
       "http-request": {
         "method": "POST",
         "url": "/cgi-bin/encrequest",
@@ -90,17 +102,17 @@
       },
       "red-request": {
         "jsonrpc": "2.0",
-        "method": "agents",
-        "params": [ "<cabezon-role-name>" ],
-        "id": "<cookie>"
+        "method": "rent",
+        "params": [],
+        "id": "<fee+rent-payment-transaction-hash>"
       },
       "http-response": {
         "status": "200 OK"
       },
       "red-async-result": {
         "jsonrpc": "2.0",
-        "result" : "<confirmation>",
-        "id": "<cookie>"
+        "result" : "<cabezon-rent-receipt>",
+        "id": "<fee+rent-payment-transaction-hash>"
       }
     }
   ]

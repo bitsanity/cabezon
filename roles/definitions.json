@@ -21,6 +21,15 @@
   },
 
   {
+    "typename" : "cabezon-rent-receipt",
+    "descrip" : "object returned as async reply to an Agent that paid rent",
+    "fields" : [
+      "<payment-and-fee-transaction-hash>",
+      "<account-balance>"
+    ]
+  },
+
+  {
     "typename" : "cabezon-rep-score",
     "descrip" : "Range of acceptable values for star-reviews.",
     "utype" : "Number",
