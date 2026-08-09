@@ -2,6 +2,7 @@
 
   {
     "typename" : "cabezon-role-name",
+    "descrip" : "Roles Agents can implement and perform for CABEZON.",
     "utype" : "enumeration",
     "values" : [
       "Concierge",
@@ -21,6 +22,7 @@
 
   {
     "typename" : "cabezon-rep-score",
+    "descrip" : "Range of acceptable values for star-reviews.",
     "utype" : "Number",
     "min": "0.0",
     "max": "5.0"
@@ -28,6 +30,7 @@
 
   {
     "typename" : "cabezon-rep-report-field",
+    "descrip" : "Names of includable fields in Repuation Reports.",
     "utype" : "enumeration",
     "values" : [
       "Value",
@@ -35,15 +38,26 @@
       "Turnaround",
       "Packaging",
       "Delivery",
-      "GoodService",
+      "Service",
       "Ethics"
     ]
   },
 
   {
-    "typename" : "cabezon-rep-report",
-    "utype" : [
-      { "<cabezon-rep-report-field>": "<cabezon-rep-score>" }
+    "typename" : "cabezon-rep-metric",
+    "descrip" : "Internal CABEZON metrics reported between agents, not public",
+    "utype": "enumeration",
+    "values" : [
+      "Referrals",
+      "Reviews",
+      "PlusCount",
+      "MinusCount",
+      "RentFails",
+      "TimesPunted",
+      "TimesJoined",
+      "Arbitrations",
+      "ContentViolations"
     ]
   }
+
 ]

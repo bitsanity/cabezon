@@ -27,7 +27,7 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "plus",
-        "params": [ "<pubkey|DID>", "<cabezon-rep-report>", "<note-txt>" ],
+        "params": [ "<pubkey>", "<cabezon-rep-report>", "<note-txt>" ],
         "id": "<ethereum-transaction-hash-from-fee>"
       },
       "http-response": {
@@ -40,7 +40,7 @@
     },
 
     {
-      "service": "getscore",
+      "service": "getrepscore",
       "descrip": "Get the latest score of reputation for an agent",
       "authentication": true,
       "synchronous": false,
@@ -60,8 +60,8 @@
       },
       "red-request": {
         "jsonrpc": "2.0",
-        "method": "getscore",
-        "params": [ "<pubkey-or-DID>" ],
+        "method": "getrepscore",
+        "params": [ "<pubkey>" ],
         "id": "<ethereum-transaction-hash-from-fee>"
       },
       "http-response": {
@@ -99,7 +99,35 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "plusminus",
-        "params": [ "<pubkey-or-DID>", "<true-if-plus>" ],
+        "params": [ "<pubkey>", "<true-if-plus>" ],
+        "id": "<ethereum-transaction-hash-from-fee>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": null
+    },
+
+    {
+      "service": "metric",
+      "descrip":
+      "[CABEZON INTERNAL] Bump CABEZON metric for an agent by an amount",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "metric",
+        "params": [ "<pubkey>", "<cabezon-rep-metric>", "<amount>" ],
         "id": "<ethereum-transaction-hash-from-fee>"
       },
       "http-response": {
@@ -107,7 +135,6 @@
       },
       "red-async-result": null
     }
-
   ]
 
 }
