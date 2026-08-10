@@ -37,8 +37,44 @@
     },
 
     {
+      "service": "roles",
+      "descrip": "Retrieve CABEZON role names and brief descriptions",
+      "authentication": true,
+      "synchronous": false,
+      "fee": null,
+      "http-request": {
+        "method": "POST",
+        "url": "/cgi-bin/encrequest",
+        "body": {
+          "msghex": "<encrypted-message-of-red-request>",
+          "sighex": "<ecdsa-signature-of-message>",
+          "spkhex": "<signers-EC-public-key>"
+        }
+      },
+      "red-request": {
+        "jsonrpc": "2.0",
+        "method": "roles",
+        "params": "[]",
+        "id": "<cookie>"
+      },
+      "http-response": {
+        "status": "200 OK"
+      },
+      "red-async-result": {
+        "jsonrpc": "2.0",
+        "result": [
+          {
+            "role": "<cabezon-role-name>",
+            "descrip": "<role-brief-description-text>"
+          }
+        ],
+        "id": "<cookie>"
+      }
+    },
+
+    {
       "service": "agents",
-      "descrip": "Retrieve SADs of CABEZON agents by <cabezon-role-name>",
+      "descrip": "Retrieve SADs of CABEZON agents by <cabezon-role-name>, or the full directory if params is empty",
       "authentication": true,
       "synchronous": false,
       "fee": null,
@@ -63,7 +99,9 @@
       },
       "red-async-result": {
         "jsonrpc": "2.0",
-        "result" : "[ SAD, ... ]",
+        "result" : {
+          "<cabezon-role-name>" : [ "SADs" ]
+        },
         "id": "<client-cookie>"
       }
     },

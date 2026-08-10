@@ -78,7 +78,7 @@
         "result" : "<listing-ref>",
         "id": "<cookie>"
       },
-      "red-async-result": {
+      "red-async-result-error": {
         "jsonrpc": "2.0",
         "error": { "code": "<code>",
           "message": "<listing-ref>"
