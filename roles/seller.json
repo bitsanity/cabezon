@@ -60,7 +60,7 @@
       "http-response": {
         "status": "200 OK"
       },
-      "http-response": {
+      "http-response-error": {
         "status": "400 Bad Request",
         "contenttype": "application/json",
         "content": "{ <error-obj> }"
@@ -102,7 +102,7 @@
       "http-response": {
         "status": "200 OK"
       },
-      "http-response": {
+      "http-response-error": {
         "status": "400 Bad Request",
         "contenttype": "application/json",
         "content": "{ <error-obj> }"
