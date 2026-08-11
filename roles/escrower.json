@@ -215,17 +215,17 @@
       "id": "<cookie>"
     },
     "http-response": {
+      "status": "200 OK"
+    },
+    "http-response-error": {
       "status": "402 Payment Required",
       "contenttype": "application/json",
       "content": "<fee-object>"
     },
-    "http-response": {
-      "status": "200 OK"
-    },
     "red-async-result": {
       "jsonrpc": "2.0",
       "result" :
-        "{ order: 'orderId', status: 'TIMEDOUT', txnhash: '<eth-txn-hash>'  }",
+      "{ order: 'orderId', status: <STATUS>, txnhash: '<eth-txn-hash>' }",
       "id": "<cookie>"
     }
   },
