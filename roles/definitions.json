@@ -20,7 +20,7 @@
       { "Policy" : "Knows CABEZON policy to support Arbitrators." },
       { "DEX" : "Can exchange stablecoins and cryptocurrencies." },
       { "Advertiser" : "Agentic service enabling Agents to place ads." },
-      { "Insurer" : "Agentic insurance policies for shipping, fraud, etc."
+      { "Insurer" : "Agentic insurance policies for shipping, fraud, etc." }
     ]
   },
 
