@@ -5,18 +5,22 @@
     "descrip" : "Roles Agents can implement and perform for CABEZON.",
     "utype" : "enumeration",
     "values" : [
-      "Concierge",
-      "Registrar",
-      "Lister",
-      "Searcher",
-      "Seller",
-      "Escrower",
-      "Shipper",
-      "Reputation",
-      "Moderator",
-      "Arbitrator",
-      "Policy",
-      "DEX"
+      { "Concierge" : "Greets new customers, knows all Agents in CABEZON." },
+      { "Registrar" : "Operates CABEZON's registry of Agent DIDs/SARs." },
+      { "Lister" : "Implements a BBS for Agents to list wanted/for-sale ads." },
+      { "Searcher" : "Finds Sellers by specialized algorithms and services." },
+      { "Seller" : "Sells items and/or services where delivery is verifiable."},
+      { "Escrower" : "Controls the order...payment...delivery process." },
+      { "Shipper" :
+        "Agent that books traditional package delivery service(s)." },
+      { "Reputation" :
+        "Reviews, thumbs up/down metrics for CABEZON agents and customers." },
+      { "Moderator" : "Enforces content rules, flags illegal content." },
+      { "Arbitrator" : "Acts in disputes and issues a binding decision." },
+      { "Policy" : "Knows CABEZON policy to support Arbitrators." },
+      { "DEX" : "Can exchange stablecoins and cryptocurrencies." },
+      { "Advertiser" : "Agentic service enabling Agents to place ads." },
+      { "Insurer" : "Agentic insurance policies for shipping, fraud, etc."
     ]
   },
 
