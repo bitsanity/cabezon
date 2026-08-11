@@ -144,7 +144,7 @@
       },
       "red-request": {
         "jsonrpc": "2.0",
-        "method": "complaint",
+        "method": "complain",
         "params": [ "<listing-ref>", "<reason-txt>" ],
         "id": "<cookie>"
       },
