@@ -1,0 +1,82 @@
+{
+  "offering": {
+    "offeringRef": "maha:deep-context-evaluation:v1",
+    "kind": "digital",
+    "title": "Deep Context Evaluation",
+    "descrip": "Compile documents to a token budget and measure exact retention of caller-labelled evidence. Exact-span retention is not factual verification or answer-quality assessment.",
+    "tags": ["context", "evaluation", "provenance", "digital"],
+    "price": {
+      "amount": "0.01",
+      "asset": "USDC",
+      "network": "eip155:8453"
+    },
+    "fulfillment": {
+      "modes": ["digital"],
+      "estimatedSeconds": 60,
+      "deliveryDeadlineSeconds": 120,
+      "shipsFrom": null,
+      "resultMediaType": "application/json"
+    },
+    "failurePolicy": {
+      "onMissedDeadline": "timeout",
+      "refundAuthority": "escrower",
+      "termsUrl": "https://www.mahastrategies.com/terms"
+    },
+    "inputSchema": "https://www.mahastrategies.com/api/discovery/x402-offers/deep-context-evaluation",
+    "outputSchema": "https://www.mahastrategies.com/api/discovery/x402-offers/deep-context-evaluation",
+    "termsUrl": "https://www.mahastrategies.com/terms"
+  },
+  "purchase": {
+    "clientOrderRef": "buyer-eval-2026-0001",
+    "offeringRef": "maha:deep-context-evaluation:v1",
+    "quantity": 1,
+    "agreedPrice": {
+      "amount": "0.01",
+      "asset": "USDC",
+      "network": "eip155:8453"
+    },
+    "input": {
+      "clientRequestId": "carp-eval-2026-0001",
+      "task": "Retain the release gate and rollback trigger.",
+      "tokenBudget": 256,
+      "documents": [
+        {
+          "id": "runbook",
+          "text": "Release after credential-rotation evidence is attached. Roll back if errors exceed two percent for five minutes."
+        }
+      ],
+      "requiredEvidence": [
+        {
+          "evidenceId": "release-gate",
+          "sourceId": "runbook",
+          "text": "Release after credential-rotation evidence is attached."
+        }
+      ]
+    },
+    "delivery": {
+      "mode": "digital",
+      "destination": null,
+      "replyTo": "carp://buyer.example/results/buyer-eval-2026-0001"
+    },
+    "specialInstructions": null
+  },
+  "fulfillment": {
+    "version": "0.1",
+    "orderId": "order-dce-0001",
+    "mode": "digital",
+    "status": "FULFILLED",
+    "reference": "ctxeval_example_0001",
+    "proof": {
+      "type": "content-digest",
+      "value": "sha256:9f67c8f5bcd3b57b845fe6e15b6f79c984458f8c12a6cc4f91227a7af0732f2c",
+      "algorithm": "sha256"
+    },
+    "result": {
+      "mediaType": "application/json",
+      "retrievalUrl": "https://seller.example/results/opaque-example-reference",
+      "digest": "sha256:9f67c8f5bcd3b57b845fe6e15b6f79c984458f8c12a6cc4f91227a7af0732f2c",
+      "expiresAt": "2026-08-12T13:00:00Z"
+    },
+    "fulfilledAt": "2026-08-12T12:00:00Z"
+  }
+}

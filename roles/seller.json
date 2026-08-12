@@ -1,11 +1,16 @@
 {
-  "descrip" :
-    "CARP services provided by a Seller Agent",
-
+  "descrip": "CARP services provided by a Seller Agent for physical goods, digital services, or hybrid offerings",
+  "model": {
+    "version": "0.2",
+    "compatibility": "The about, enquiry, and purchase service names are retained. Legacy itemref/upc values map to offeringRef, shipto maps to delivery.destination, and a tracking reference remains a valid fulfillment reference.",
+    "fees": "A CARP service fee admits and protects a request. It is separate from the offering price, buyer bond, escrow fee, and settlement amount.",
+    "fulfillment": "A physical order is fulfilled by delivery through a carrier; a digital order by delivering a result or retrieval reference; a hybrid order by both. Escrow remains authoritative for payment and order state.",
+    "security": "Implementations must validate untrusted parameters before storing or forwarding them. Fulfillment descriptors should contain hashes and opaque references rather than private customer data or access credentials."
+  },
   "services": [
     {
       "service": "about",
-      "descrip": "Get a text information package about this Seller/Store",
+      "descrip": "Get information about this Seller, its policies, and supported fulfillment modes",
       "authentication": true,
       "synchronous": false,
       "fee": null,
@@ -21,7 +26,7 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "about",
-        "params": "[]",
+        "params": [],
         "id": "<cookie>"
       },
       "http-response": {
@@ -29,19 +34,21 @@
       },
       "red-async-result": {
         "jsonrpc": "2.0",
-        "result" : "<about-seller-text>",
+        "result": {
+          "seller": "<seller-handle>",
+          "descrip": "<about-seller-text>",
+          "fulfillmentModes": ["physical", "digital", "hybrid"],
+          "termsUrl": "<https-url-or-null>"
+        },
         "id": "<cookie>"
       }
     },
-
     {
       "service": "enquiry",
-      "descrip":
-        "Enquire about items relevant to [tag,tag,...] and/or <img>",
+      "descrip": "Find offerings relevant to a query, tags, and/or an optional image",
       "authentication": true,
       "synchronous": false,
       "fee": null,
-
       "http-request": {
         "method": "POST",
         "url": "/cgi-bin/encrequest",
@@ -54,7 +61,12 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "enquiry",
-        "params": "{ tags: ['<tag>', ...], imgtxt: 'image/png;base64,...' | '' | null }",
+        "params": {
+          "query": "<natural-language-description-or-null>",
+          "tags": ["<tag>"],
+          "imgtxt": "<image-media-type>;base64,<data> | null"
+        },
+        "legacy-params": "{ tags: ['<tag>', ...], imgtxt: 'image/png;base64,...' | '' | null }",
         "id": "<cookie>"
       },
       "http-response": {
@@ -67,21 +79,47 @@
       },
       "red-async-result": {
         "jsonrpc": "2.0",
-        "result" : "[ { itemref: <upc>, price: <price>, <ships-from>, ... } ]",
+        "result": [
+          {
+            "offeringRef": "<stable-seller-scoped-reference; legacy itemref/upc accepted>",
+            "kind": "physical | digital | hybrid",
+            "title": "<human-and-machine-readable-title>",
+            "descrip": "<what-is-sold-and-its-material-limitations>",
+            "tags": ["<tag>"],
+            "price": {
+              "amount": "<decimal-string>",
+              "asset": "<asset-symbol-or-contract-address>",
+              "network": "<network-identifier>"
+            },
+            "fulfillment": {
+              "modes": ["physical | digital"],
+              "estimatedSeconds": "<non-negative-integer-or-null>",
+              "deliveryDeadlineSeconds": "<positive-integer-or-null>",
+              "shipsFrom": "<location-or-null>",
+              "resultMediaType": "<media-type-or-null>"
+            },
+            "failurePolicy": {
+              "onMissedDeadline": "timeout | arbitration | seller-defined-remedy",
+              "refundAuthority": "escrower",
+              "termsUrl": "<https-url-or-null>"
+            },
+            "inputSchema": "<https-url-or-inline-object-or-null>",
+            "outputSchema": "<https-url-or-inline-object-or-null>",
+            "termsUrl": "<https-url-or-null>"
+          }
+        ],
         "id": "<cookie>"
       }
     },
-
     {
       "service": "purchase",
-      "descrip":
-        "Request to purchase <qty> <upc> at <price>, ship to <shipto>, <special-instructions>",
+      "descrip": "Ask the Seller to accept an offering selection and return escrow payment instructions. The CARP fee admits the request; it does not pay for the order.",
       "authentication": true,
       "synchronous": false,
       "fee": {
-        "amt": "0.0005 ether",
-        "to": "0x...address",
-        "network": "Ethereum"
+        "amt": "<seller-defined-admission-fee>",
+        "to": "<seller-admission-fee-address>",
+        "network": "<admission-fee-network>"
       },
       "http-request": {
         "method": "POST",
@@ -95,9 +133,25 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "purchase",
-        "params":
-          "[ <qty>, <upc>, <price>, <shipto>, <special-instructions> ]",
-        "id": "<cookie>"
+        "params": {
+          "clientOrderRef": "<buyer-generated-idempotency-reference>",
+          "offeringRef": "<selected-offering-reference; legacy upc accepted>",
+          "quantity": "<positive-number; normally 1 for a digital service>",
+          "agreedPrice": {
+            "amount": "<decimal-string>",
+            "asset": "<asset-symbol-or-contract-address>",
+            "network": "<network-identifier>"
+          },
+          "input": "<offering-specific-input-or-null>",
+          "delivery": {
+            "mode": "physical | digital | hybrid",
+            "destination": "<postal-destination-or-null>",
+            "replyTo": "<CARP-or-HTTPS-result-destination-or-null>"
+          },
+          "specialInstructions": "<text-or-null>"
+        },
+        "legacy-params": "[ <qty>, <upc>, <price>, <shipto>, <special-instructions> ]",
+        "id": "<admission-fee-payment-reference-or-cookie>"
       },
       "http-response": {
         "status": "200 OK"
@@ -109,11 +163,49 @@
       },
       "red-async-result": {
         "jsonrpc": "2.0",
-        "result" : "{<payment-instructions-including-escrower-orderId>}",
+        "result": {
+          "orderId": "<seller-or-escrower-order-id>",
+          "clientOrderRef": "<buyer-generated-idempotency-reference>",
+          "status": "PAYMENT_REQUIRED",
+          "paymentInstructions": {
+            "escrower": "<escrower-SAD-or-CARP-reference>",
+            "service": "buy",
+            "orderId": "<escrower-order-id>",
+            "amount": "<price-plus-bond-and-escrow-fee>",
+            "asset": "<asset-symbol-or-contract-address>",
+            "network": "<network-identifier>",
+            "expiresAt": "<RFC3339-timestamp-or-null>"
+          },
+          "fulfillmentExpectation": {
+            "modes": ["physical | digital"],
+            "estimatedSeconds": "<non-negative-integer-or-null>",
+            "deliveryDeadlineSeconds": "<positive-integer-or-null>"
+          }
+        },
         "id": "<cookie>"
       }
     }
-
-  ]
-
+  ],
+  "fulfillment-descriptor": {
+    "descrip": "Optional typed proof accompanying the tracking/fulfillment reference passed to the Escrower's ship service. The reference string remains backward compatible.",
+    "fields": {
+      "version": "0.1",
+      "orderId": "<escrower-order-id>",
+      "mode": "physical | digital | hybrid",
+      "status": "FULFILLED",
+      "reference": "<carrier-tracking-number-result-id-or-opaque-reference>",
+      "proof": {
+        "type": "carrier-tracking | content-digest | signed-receipt | composite",
+        "value": "<proof-value-or-https-url>",
+        "algorithm": "<hash-or-signature-algorithm-or-null>"
+      },
+      "result": {
+        "mediaType": "<media-type-or-null>",
+        "retrievalUrl": "<https-url-or-null>",
+        "digest": "<algorithm:hex-or-null>",
+        "expiresAt": "<RFC3339-timestamp-or-null>"
+      },
+      "fulfilledAt": "<RFC3339-timestamp>"
+    }
+  }
 }

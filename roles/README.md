@@ -31,3 +31,11 @@ Assuming you have a CARP interface:
 3. Feel free to extend one's own interface but keep the defined services so clients know what to expect.
 4. CABEZON Members will be removed for illegal behaviour.
 
+## Seller fulfillment
+
+The Seller role supports physical goods, digital services, and hybrid offerings
+through a common fulfillment model. See
+[`seller-fulfillment.md`](seller-fulfillment.md) for the lifecycle, compatibility
+rules, fee separation, and safety boundaries. Worked examples are available for
+a [physical shipment](examples/seller-physical.json) and a
+[digital service](examples/seller-digital.json).

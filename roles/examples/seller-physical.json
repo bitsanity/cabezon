@@ -1,0 +1,65 @@
+{
+  "offering": {
+    "offeringRef": "tea-ceylon-op1-25kg",
+    "kind": "physical",
+    "title": "Ceylon OP1 black tea, 25 kg lot",
+    "descrip": "Export-ready bulk tea lot. Import clearance and destination duties are the buyer's responsibility.",
+    "tags": ["tea", "ceylon", "bulk", "physical"],
+    "price": {
+      "amount": "240.00",
+      "asset": "USDC",
+      "network": "eip155:8453"
+    },
+    "fulfillment": {
+      "modes": ["physical"],
+      "estimatedSeconds": 604800,
+      "deliveryDeadlineSeconds": 1209600,
+      "shipsFrom": "Colombo, Sri Lanka",
+      "resultMediaType": null
+    },
+    "failurePolicy": {
+      "onMissedDeadline": "timeout",
+      "refundAuthority": "escrower",
+      "termsUrl": "https://seller.example/terms/tea-export"
+    },
+    "inputSchema": null,
+    "outputSchema": null,
+    "termsUrl": "https://seller.example/terms/tea-export"
+  },
+  "purchase": {
+    "clientOrderRef": "buyer-order-2026-0001",
+    "offeringRef": "tea-ceylon-op1-25kg",
+    "quantity": 1,
+    "agreedPrice": {
+      "amount": "240.00",
+      "asset": "USDC",
+      "network": "eip155:8453"
+    },
+    "input": null,
+    "delivery": {
+      "mode": "physical",
+      "destination": "Example Imports, 100 Market Street, Vancouver, BC, Canada",
+      "replyTo": null
+    },
+    "specialInstructions": "Provide the commercial invoice and certificate of origin."
+  },
+  "fulfillment": {
+    "version": "0.1",
+    "orderId": "order-tea-0001",
+    "mode": "physical",
+    "status": "FULFILLED",
+    "reference": "DHL-EXAMPLE-123456",
+    "proof": {
+      "type": "carrier-tracking",
+      "value": "https://carrier.example/track/DHL-EXAMPLE-123456",
+      "algorithm": null
+    },
+    "result": {
+      "mediaType": null,
+      "retrievalUrl": null,
+      "digest": null,
+      "expiresAt": null
+    },
+    "fulfilledAt": "2026-08-12T12:00:00Z"
+  }
+}
