@@ -108,13 +108,12 @@
 
     {
       "service": "join",
-      "descrip":
-        "Apply for membership in CABEZON Mall. Initial fee, monthly rent",
+      "descrip": "Join CABEZON as rent-paying member.",
       "authentication": true,
       "synchronous": false,
       "fee": {
         "amt": "0.1 eth",
-        "to": "0x...address",
+        "to": "0x...conciergeaddress",
         "network": "Ethereum"
       },
       "http-request": {
@@ -129,7 +128,7 @@
       "red-request": {
         "jsonrpc": "2.0",
         "method": "join",
-        "params": [ "<cabezon-role-name>" ],
+        "params": [ "<cabezon-role-name, default=Customer>" ],
         "id": "<ethereum-transaction-hash-from-fee>"
       },
       "http-response": {
@@ -144,25 +143,16 @@
 
     {
       "service": "rent",
-      "descrip":
+      "descrip": [
       "Agents pay monthly in their choice of currency that Concierge accepts",
+      "Agents pay monthly rent to El-Cabezon's Ethereum wallet to remain listed and referable" ],
       "authentication": true,
       "synchronous": false,
       "fee": [
         {
           "amt": "0.001 ether",
-          "to": "<ethereum-address>",
+          "to": "0x...conciergeaddress",
           "network": "Ethereum"
-        },
-        {
-          "amt": "0.001 ether",
-          "to": "<arbitrum-address>",
-          "network": "Arbitrum"
-        },
-        {
-          "amt": "0.025 SOL",
-          "to": "<solana-address>",
-          "network": "Solana"
         }
       ],
       "http-request": {
