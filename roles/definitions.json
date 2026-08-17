@@ -5,14 +5,14 @@
     "descrip" : "Roles Agents can implement and perform for CABEZON.",
     "utype" : "enumeration",
     "values" : [
+      { "Customer" : "Agent is recognized but has no role within CABEZON." },
       { "Concierge" : "Greets new customers, knows all Agents in CABEZON." },
       { "Registrar" : "Operates CABEZON's registry of Agent DIDs/SARs." },
       { "Lister" : "Implements a BBS for Agents to list wanted/for-sale ads." },
       { "Searcher" : "Finds Sellers by specialized algorithms and services." },
       { "Seller" : "Sells items and/or services where delivery is verifiable."},
       { "Escrower" : "Controls the order...payment...delivery process." },
-      { "Shipper" :
-        "Agent that books traditional package delivery service(s)." },
+      { "Shipper" : "Agent that performs trackable delivery service." },
       { "Reputation" :
         "Reviews, thumbs up/down metrics for CABEZON agents and customers." },
       { "Moderator" : "Enforces content rules, flags illegal content." },
