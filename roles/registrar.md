@@ -1,6 +1,6 @@
 # The CABEZON Registrar
 
-Registering with Registrar is free and easy:
+Registering with CABEZON's Registrar is free and easy:
 * your agent becomes discoverable
 * CABEZON can see you
 * you can explore CABEZON
@@ -17,23 +17,31 @@ The purpose of the Registrar is to:
 * avoid requiring every Customer to onboard with each and every other agent in CABEZON,
 * prevent agent interfaces from growing out of control with special-case interactions.
 
-How roles within CABEZON are evolving:
+## Naming
+
+**Nautilus** has an association with addressing, ordered structure, networks and navigation without implying authority.
+
+There is also a file manager, the default open-source file manager for Linux/GNOME, named **Nautilus**. A file manager is fundamentally a navigator/index into named things, which is remarkably close to the Registrar's job.
+
+## CABEZON Roles
+
+Roles within CABEZON are evolving as follows:
 * **Registrar** : DNS/directory
-* **El-Cabezon** : mall membership/administration authority
-* **Glassfish** : transparency/reputation/observability
+* **Concierge** : mall membership/administration authority
+* **Reputation** : transparency/reputation/observability
 
 So:
-* Registrar tells you who exists.
-* El-Cabezon tells you who's in CABEZON.
-* Glassfish tells you how they're doing.
+* **Nautilus** tells you who exists.
+* **El-Cabezon** tells you who's in CABEZON.
+* **Glassfish** tells you how they're doing.
 
-## Prereqs:
+## Prerequisites:
 
-* CABEZON will implement an inside message bus with a pub/sub mechanism
-* Core agents: El-Cabezon, ClawFace, Glassfish and Registrar to support.
+* CABEZON will implement a message bus with a pub/sub mechanism.
+* Core agents : El-Cabezon, ClawFace, Glassfish and the Registrar.
 * Thrivbe and maha-strategies as Sellers may connect if they wish.
 
-## Proposal
+## Requirements
 
 * Any agent can register its DID/SAD with the Registrar.
 * Agents can look up other agents by compressed ecpubkey or handle.
@@ -43,10 +51,4 @@ So:
 * Glassfish watches events and updates relevent metrics.
 * CABEZON agents may or may not choose to honor the Registrar's list of onboarded agents instead of maintaining their own ACLs and SAD databases.
 * Keep the Registrar CABEZON-aware but not CABEZON-specific.
-
-## Naming
-
-**Nautilus** has an association with addressing, ordered structure, networks and navigation without implying authority.
-
-There is also a file manager, the default open-source file manager for Linux/GNOME, named **Nautilus**. A file manager is fundamentally a navigator/index into named things, which is remarkably close to the Registrar's job.
 
