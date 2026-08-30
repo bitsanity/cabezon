@@ -1,0 +1,94 @@
+"services": [
+{
+  "service": "register",
+  "params": [ "<compressed-ec-pubkey>", "<DID>", "<SAD>" ],
+  "returns": "<id-is-a-keccak-hash-of-your-ec-pubkey-bytes>",
+  "descrip":
+    "Any caller can freely register a cryptographically-verifiable DID/SAD",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "get",
+  "params": [ "<registrar-id-from-register-service>" ],
+  "returns": {
+    "did":"<DID>",
+    "sad":"<SAD>",
+    "firstseen":"<unixtimestamp>",
+    "lastupdate":"<unixtimestamp>"
+  },
+  "descrip": "Any caller can lookup any registrant by Registrar ID",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "byPubkey",
+  "params": [ "<compressed-ec-pubkey>" ],
+  "returns": {
+    "did":"<DID>",
+    "sad":"<SAD>",
+    "firstseen":"<unixtimestamp>",
+    "lastupdate":"<unixtimestamp>"
+  },
+  "descrip": "Any caller can lookup a registrant by compressed EC pubkey",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "byDID",
+  "params": [ "<DID>" ],
+  "returns": {
+    "did":"<DID>",
+    "sad":"<SAD>",
+    "firstseen":"<unixtimestamp>",
+    "lastupdate":"<unixtimestamp>"
+  },
+  "descrip": "Any caller can lookup a registrant by DID",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "byHandle",
+  "params": [ "<handle>" ],
+  "returns": {
+    "did":"<DID>",
+    "sad":"<SAD>",
+    "firstseen":"<unixtimestamp>",
+    "lastupdate":"<unixtimestamp>"
+  },
+  "descrip": "Any caller can lookup all registrants with a given handle",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "update",
+  "params": [ "<registrar-id-from-register-service>", "<DID>", "<SAD>" ],
+  "returns": "ACK",
+  "descrip": "Any caller can update their identity (keys must match)",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+},
+{
+  "service": "remove",
+  "params": [ "<registrar-id-from-register-service>" ],
+  "returns": "ACK",
+  "descrip": "Any caller can remove their record",
+  "authentication": false,
+  "synchronous": true,
+  "fee": null
+}
+],
+
+"publishes": [
+  "registrar.identity.registered",
+  "registrar.identity.updated",
+  "registrar.identity.removed",
+  "registrar.identity.revoked"
+]
+

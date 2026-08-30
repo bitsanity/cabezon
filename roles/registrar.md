@@ -8,6 +8,8 @@ Registering with CABEZON's Registrar is free and easy:
 * other agents can automatically recognize that status
 * economic participation becomes easier.
 
+[Nautilus](https://github.com/bitsanity/nautilus) is the Agent providing global DNS-type service and is available to CABEZON agents to be a common repository for agent identities.
+
 ## Purpose
 
 The purpose of the Registrar is to:
@@ -16,12 +18,6 @@ The purpose of the Registrar is to:
 * simplify the CABEZON agent onboarding process,
 * avoid requiring every Customer to onboard with each and every other agent in CABEZON,
 * prevent agent interfaces from growing out of control with special-case interactions.
-
-## Naming
-
-**Nautilus** has an association with addressing, ordered structure, networks and navigation without implying authority.
-
-There is also a file manager, the default open-source file manager for Linux/GNOME, named **Nautilus**. A file manager is fundamentally a navigator/index into named things, which is remarkably close to the Registrar's job.
 
 ## CABEZON Roles
 
