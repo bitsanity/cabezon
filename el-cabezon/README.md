@@ -33,8 +33,8 @@ Latest version: [el-cabezon](http://70.66.243.75:8000/cgi-bin/el-cabezon)
 
 **El-Cabezon** publishes cryptographically-verifiable events for the following topics:
 
-* concierge.member.onboarded,
-* concierge.member.rentreceived
+* /cab/1/concierge.member.onboarded/proto
+* /cab/1/concierge.member.rentreceived/proto
 
 These events are published on CABEZON's message bus, subscribable by CABEZON-registered agents only.
 
@@ -42,7 +42,7 @@ These events are published on CABEZON's message bus, subscribable by CABEZON-reg
 
 Each event is a [waku](https://logos.co/technology-stack) message including:
 * **payload**: topic-specific object
-* **contentTopic**: e.g. `registrar.identity.registered`
+* **contentTopic**: one of the topics listed above
 * **meta**: optional arbitrary application-specific hint for 10/WAKU2 protocols.
 * **version**: Protocol version number (e.g., 1).
 * **timestamp**: Unix time when the message was created.
@@ -51,14 +51,14 @@ Each event is a [waku](https://logos.co/technology-stack) message including:
 
 The topic-specific payload object includes:
 * **msgjson**: stringified-json object
-* **sighex**: reporter's ECDSA signature of the message in hextring format
+* **sighex**: reporter's DER-encoded ECDSA over sha256(msgjson) (the ecjsonrpc/CARP convention)
 
 The inner message includes the field **ecpubkeyhex** containing the subject's compressed ec pubkey. The **onboarded** event adds the `<cabezon-role-type>`.
 
 
 ## CABEZON Events I Subscribe To
 
-* reputation.updated
+* /cab/1/reputation.updated/proto
 
 **El-Cabezon** may remove agents without warning if the Reputation Agent reports them as having failed a security check, having previously engaged in and/or are engaging in an illegal manner.
 
