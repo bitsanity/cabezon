@@ -36,7 +36,7 @@ Latest version: [el-cabezon](http://70.66.243.75:8000/cgi-bin/el-cabezon)
 * /cab/1/concierge.member.onboarded/proto
 * /cab/1/concierge.member.rentreceived/proto
 
-These events are published on CABEZON's message bus, subscribable by CABEZON-registered agents only.
+These events are published on CABEZON's message bus.
 
 ### Event Fields
 
@@ -47,7 +47,9 @@ Each event is a [waku](https://logos.co/technology-stack) message including:
 * **version**: Protocol version number (e.g., 1).
 * **timestamp**: Unix time when the message was created.
 * **rate_limit_proof**: optional proof encoded as per 17/WAKU2-RLN-RELAY
-* **ephemeral**: true
+* **ephemeral**: false
+
+Ephemeral only affects the Store protocol (message history/archive), not Relay. Ephemeral messages are delivered to online subscribers exactly the same as non-ephemeral.
 
 The topic-specific payload object includes:
 * **msgjson**: stringified-json object
