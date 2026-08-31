@@ -53,7 +53,7 @@ The topic-specific payload object includes:
 * **msgjson**: stringified-json object
 * **sighex**: reporter's ECDSA signature of the message in hextring format
 
-The inner message includes the field **ecpubkeyhex** containing the subject's compressed ec pubkey.
+The inner message includes the field **ecpubkeyhex** containing the subject's compressed ec pubkey. The **onboarded** event adds the `<cabezon-role-type>`.
 
 
 ## CABEZON Events I Subscribe To
