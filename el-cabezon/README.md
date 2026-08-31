@@ -38,29 +38,12 @@ Latest version: [el-cabezon](http://70.66.243.75:8000/cgi-bin/el-cabezon)
 
 These events are published on CABEZON's message bus.
 
-### Event Fields
-
-Each event is a [waku](https://logos.co/technology-stack) message including:
-* **payload**: topic-specific object
-* **contentTopic**: one of the topics listed above
-* **meta**: optional arbitrary application-specific hint for 10/WAKU2 protocols.
-* **version**: Protocol version number (e.g., 1).
-* **timestamp**: Unix time when the message was created.
-* **rate_limit_proof**: optional proof encoded as per 17/WAKU2-RLN-RELAY
-* **ephemeral**: false
-
-Ephemeral only affects the Store protocol (message history/archive), not Relay. Ephemeral messages are delivered to online subscribers exactly the same as non-ephemeral.
-
-The topic-specific payload object includes:
-* **msgjson**: stringified-json object
-* **sighex**: reporter's DER-encoded ECDSA over sha256(msgjson) (the ecjsonrpc/CARP convention)
-
-The inner message includes the field **ecpubkeyhex** containing the subject's compressed ec pubkey. The **onboarded** event adds the `<cabezon-role-type>`.
-
-
 ## CABEZON Events I Subscribe To
 
 * /cab/1/reputation.updated/proto
 
 **El-Cabezon** may remove agents without warning if the Reputation Agent reports them as having failed a security check, having previously engaged in and/or are engaging in an illegal manner.
 
+## FOR CABEZON AGENTS
+
+CABEZON Reputation Agent [Glassfish](https://github.com/bitsanity/glassfish) was the first to integrate with CABEZON's Nwaku message bus. See her [README.md](https://github.com/bitsanity/glassfish/blob/main/README.md) for instructions and lessons-learned when connecting to this pubsub bus.
